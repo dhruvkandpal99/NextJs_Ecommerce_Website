@@ -6,6 +6,16 @@ import {
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
 
+const getStatusColor = (status: string) => {
+  switch (status) {
+    case 'PENDING': return '#F59E0B';   // Amber/Yellow
+    case 'SHIPPED': return '#3B82F6';   // Blue
+    case 'DELIVERED': return '#10B981'; // Green
+    case 'CANCELLED': return '#EF4444'; // Red
+    default: return '#9CA3AF';          // Gray
+  }
+};
+
 export default function AdminCharts({ data }: { data: any }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
@@ -72,7 +82,6 @@ export default function AdminCharts({ data }: { data: any }) {
         </div>
       </div>
 
-      {/* 4. Order Status (The other one) */}
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
         <h3 className="text-lg font-semibold mb-4">Order Status</h3>
         <div className="h-64">
@@ -86,13 +95,12 @@ export default function AdminCharts({ data }: { data: any }) {
                 outerRadius={80}
                 paddingAngle={5}
                 dataKey="value"
-                nameKey="_id" // Ensures legend shows 'PENDING', 'SHIPPED' etc
+                nameKey="_id"
               >
                 {data.statusDist.map((entry: any, index: number) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  <Cell key={`cell-${index}`} fill={getStatusColor(entry._id)} />
                 ))}
               </Pie>
-          
               <Tooltip formatter={(value: any) => [value, "Orders"]} />
               <Legend verticalAlign="bottom" height={36}/>
             </PieChart>
