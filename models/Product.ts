@@ -10,6 +10,7 @@ export interface IProduct extends Document {
   imageUrl: string;
   createdAt: Date;
   updatedAt: Date;
+  soldCount: number;
 }
 
 // 2. Define the Schema
@@ -37,6 +38,7 @@ const ProductSchema = new Schema<IProduct>(
       required: [true, 'Please specify stock quantity'],
       default: 0,
     },
+    soldCount: { type: Number, default: 0 },
     imageUrl: {
       type: String,
       required: [true, 'Please provide an image URL'],

@@ -31,7 +31,7 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
       },
     }),
   ],
-  // ⬇️ ADD THIS SECTION ⬇️
+  
   callbacks: {
     async jwt({ token, user }) {
       // Initially, the user object is available only on the first call

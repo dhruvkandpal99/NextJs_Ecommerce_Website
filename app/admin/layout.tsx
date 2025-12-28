@@ -14,7 +14,9 @@ export default function AdminLayout({
         {/* Left: Logo / Title */}
         <div className="flex items-center gap-8">
           <Link href="/admin" className="text-xl font-bold text-blue-600">
-            Store Admin
+            <div className="text-xl font-bold tracking-tight text-slate-900">
+            Standard<span className="text-blue-600">Electronics</span>.
+          </div>
           </Link>
           
           {/* Navigation Links */}
@@ -23,7 +25,7 @@ export default function AdminLayout({
               Overview
             </Link>
             <Link href="/admin/products" className="hover:text-black hover:underline">
-              Products (Add/Edit)
+              Products
             </Link>
           </div>
         </div>
